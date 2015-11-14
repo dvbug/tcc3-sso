@@ -1,0 +1,67 @@
+{% extends "bootstrap/base.html" %}
+{% import "layouts/utils.html" as utils %}
+
+{% set SSO_TITLE = "TCC3 - SSO Center" %}
+
+{% block title%}
+    {{ SSO_TITLE }}
+    {% if header %}
+     - {{ header }}
+    {% endif %}
+{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    {{ utils.static_css('default.css') }}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="text-center">
+        <h1 class=" h1">{{ SSO_TITLE }}</h1>
+
+        {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+        {% endfor %}
+    </div>
+    <div class="container">
+        {% block content_center %}
+            <div class="form_block col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-xs-12 col-xs-offset-0 table-bordered">
+                {% block page_form %}
+                    <h2 class=" h2 text-center">{{ header }}</h2>
+                {% endblock %}
+            <p class="text-center "><a class="" href="{{ url_for('main.index', **referrer_dict) }}">← Go Welcome</a></p>
+            </div>
+
+            <div style="margin-top: 50px" class="form_block col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-xs-12 col-xs-offset-0 table-bordered">
+                <div class="">
+                    <table class="table table-bordered">
+
+                        <thead ><p class="h5 text-info">Test account for &lt;TCC3 Portal&gt; and &lt;SSO Center&gt;</p></thead>
+                        <tbody>
+                            <tr>
+                                <th>#</th>
+                                <th>Account</th>
+                                <th>Password</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>admin</td>
+                                <td>admin123</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>vito</td>
+                                <td>vito2008</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "layouts/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% set header = "Please Sigin Up" %}
+
+
+{% block page_form %}
+{{ super() }}
+
+<form method="post" class="form-horizontal">
+{{ form.hidden_tag() }}
+<div class="form-group ">
+    {{ form.nick_name.label(class="control-label col-sm-3", value="昵称") }}
+     <div class="col-sm-9">
+{#         col-sm-4#}
+         {{ form.nick_name(size=20, class="form-control", placeholder="username") }}
+         {% for error in form.errors.nick_name %}
+             <span style="color:red;">* {{ error }}</span>
+         {% endfor %}
+     </div>
+</div>
+<div class="form-group">
+    {{ form.pwd.label(class="control-label col-sm-3") }}
+     <div class="col-sm-9">
+{#     col-sm-4#}
+         {{ form.pwd(size=20, class="form-control", placeholder="password") }}
+         {% for error in form.errors.pwd %}
+             <span style="color:red;">* {{ error }}</span>
+         {% endfor %}
+     </div>
+</div>
+<div class="form-group">
+    {{ form.cfm_pwd.label(class="control-label col-sm-3") }}
+     <div class="col-sm-9">
+{#     col-sm-4#}
+         {{ form.cfm_pwd(size=20, class="form-control", placeholder="password again") }}
+         {% for error in form.errors.cfm_pwd %}
+             <span style="color:red;">* {{ error }}</span>
+         {% endfor %}
+     </div>
+</div>
+<div class="form-group">
+    {{ form.email.label(class="control-label col-sm-3") }}
+     <div class="col-sm-9">
+{#     col-sm-4#}
+         {{ form.email(size=20, class="form-control", placeholder="email") }}
+         {% for error in form.errors.email %}
+             <span style="color:red;">* {{ error }}</span>
+         {% endfor %}
+     </div>
+</div>
+<div class="form-group">
+    {{ form.cfm_email.label(class="control-label col-sm-3") }}
+     <div class="col-sm-9">
+{#     col-sm-4#}
+         {{ form.cfm_email(size=20, class="form-control", placeholder="email again") }}
+         {% for error in form.errors.cfm_email %}
+             <span style="color:red;">* {{ error }}</span>
+         {% endfor %}
+     </div>
+</div>
+<div class="form-group">
+     <div class="col-sm-3 col-xs-6">
+         <a class="btn btn-default form-control" href="{{ url_for('sso.login', **referrer_dict) }}">Back Login</a>
+     </div>
+      <div class="col-sm-9 col-xs-6">
+           <input type="submit" value="Sign Up" class="btn btn-success form-control" >
+     </div>
+ </div>
+
+</form>
+{% endblock %}

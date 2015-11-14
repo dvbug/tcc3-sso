@@ -1,0 +1,10 @@
+{% extends "layouts/base.html" %}
+
+{% set header = "Welcome to TCC3 SSO Center" %}
+
+{% block content_center %}
+<div>
+<h2 class=" h2 text-center">{{ header }}</h2>
+<p class="text-center "><a class="" href="{{ url_for('sso.login', **referrer_dict) }}">Go Login →</a></p>
+</div>
+{% endblock %}

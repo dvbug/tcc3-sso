@@ -1,0 +1,41 @@
+{% extends "layouts/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% set header = "Please Login" %}
+
+
+{% block page_form %}
+{{ super() }}
+<form method="post" class="form-horizontal">
+{{ form.hidden_tag() }}
+<div class="form-group ">
+    {{ form.account.label(class="control-label col-sm-3") }}
+     <div class="col-sm-9">
+{#         col-sm-4#}
+         {{ form.account(size=20, class="form-control", placeholder="username or email") }}
+         {% for error in form.errors.account %}
+             <span style="color:red;">* {{ error }}</span>
+         {% endfor %}
+     </div>
+</div>
+<div class="form-group">
+    {{ form.pwd.label(class="control-label col-sm-3") }}
+     <div class="col-sm-9">
+{#     col-sm-4#}
+         {{ form.pwd(size=20, class="form-control", placeholder="password") }}
+         {% for error in form.errors.pwd %}
+             <span style="color:red;">* {{ error }}</span>
+         {% endfor %}
+     </div>
+</div>
+<div class="form-group">
+     <div class="col-sm-3 col-xs-6">
+         <a class="btn btn-default form-control" href="{{ url_for('sso.register',**referrer_dict) }}">Sign Up</a>
+     </div>
+      <div class="col-sm-9 col-xs-6">
+           <input type="submit" value="Login" class="btn btn-success form-control" >
+     </div>
+ </div>
+
+</form>
+{% endblock %}
