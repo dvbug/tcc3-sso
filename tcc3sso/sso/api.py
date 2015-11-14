@@ -4,6 +4,8 @@
     ~~~~~~~~~~~~~~~~~~~~
 
     tcc3sso sso api module.
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 from flask import make_response, jsonify
 from .token import SSOToken

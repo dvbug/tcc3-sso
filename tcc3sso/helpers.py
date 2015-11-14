@@ -4,6 +4,8 @@
     ~~~~~~~~~~~~~~~~~~~~
 
     tcc3sso helpers module.
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 
 from flask.json import JSONEncoder as BaseJSONEncoder

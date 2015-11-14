@@ -4,6 +4,8 @@
     ~~~~~~~~~~~~~~~~~~~~
 
     sso entities module.
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 
 from ..core import db, Q

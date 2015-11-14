@@ -4,6 +4,8 @@
     ~~~~~~~~~~~~~~~~~~~~
 
     tcc3sso forms module.
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 from flask_wtf import Form
 from wtforms import StringField, BooleanField, PasswordField, ValidationError

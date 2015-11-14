@@ -4,6 +4,8 @@
     ~~~~~~~~~~~~~~~~~~~~
 
     sso token module.
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 import uuid
 import time

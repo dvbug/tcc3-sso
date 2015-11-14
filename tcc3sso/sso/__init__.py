@@ -4,6 +4,8 @@
     ~~~~~~~~~~~~~~~~~~~~
 
     tcc3sso sso package.
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 from .token import SSOToken
 from .cookie import Cookie

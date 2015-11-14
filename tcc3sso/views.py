@@ -4,6 +4,8 @@
     ~~~~~~~~~~~~~~~~~~~~
 
     tcc3sso views module.
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 import urllib.parse
 from flask import Blueprint, abort, render_template, url_for, make_response, redirect, flash, request, jsonify
