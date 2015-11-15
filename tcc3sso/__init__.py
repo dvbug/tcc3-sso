@@ -12,7 +12,7 @@ from flask_bootstrap import Bootstrap
 from .views import bp_sso, bp_main, bp_api, bp_api_1_0
 from .core import db, lm
 from .helpers import JSONEncoder
-from .sso.entities import LoginUser
+from .sso.entities import UserProfile
 
 
 def create_app(settings_override=None):
@@ -32,7 +32,7 @@ def create_app(settings_override=None):
 
     @lm.user_loader
     def load_user(user_id):
-        user = LoginUser.objects.get(id=user_id)
+        user = UserProfile.objects.get(id=user_id)
         return user
 
     app.register_blueprint(bp_main)

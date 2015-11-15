@@ -9,8 +9,8 @@
 """
 from .token import SSOToken
 from .cookie import Cookie
-from .entities import LoginUser
+from .entities import UserProfile, UserPhone, LocalAuth
 from .api import SSOApi
 
-__all__ = ['SSOToken', 'Cookie', 'LoginUser', 'SSOApi']
+__all__ = ['SSOToken', 'Cookie', 'UserProfile', 'SSOApi', 'LocalAuth', 'UserPhone']
 

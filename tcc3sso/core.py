@@ -8,7 +8,7 @@
     :license: GNU, see LICENSE for more details.
 """
 from flask_mongoengine import MongoEngine
-from flask_login import LoginManager
+from flask_login import LoginManager, UserMixin, AnonymousUserMixin
 from mongoengine.queryset.visitor import Q
 
 db = MongoEngine()

@@ -10,7 +10,7 @@
 <form method="post" class="form-horizontal">
 {{ form.hidden_tag() }}
 <div class="form-group ">
-    {{ form.nick_name.label(class="control-label col-sm-3", value="昵称") }}
+    {{ form.nick_name.label(class="control-label col-sm-3") }}
      <div class="col-sm-9">
 {#         col-sm-4#}
          {{ form.nick_name(size=20, class="form-control", placeholder="username") }}
@@ -60,6 +60,42 @@
      </div>
 </div>
 <div class="form-group">
+    {{ form.real_name.label(class="control-label col-sm-3") }}
+     <div class="col-sm-9">
+         {{ form.real_name(size=20, class="form-control", placeholder="real name") }}
+         {% for error in form.errors.real_name %}
+             <span style="color:red;">* {{ error }}</span>
+         {% endfor %}
+     </div>
+</div>
+<div class="form-group ">
+    {{ form.gender.label(class="control-label col-sm-3") }}
+     <div class="col-sm-9">
+         {{ form.gender(size=20, class="form-control select", placeholder="gender") }}
+         {% for error in form.errors.gender %}
+             <span style="color:red;">* {{ error }}</span>
+         {% endfor %}
+     </div>
+</div>
+<div class="form-group">
+    {{ form.birth.label(class="control-label col-sm-3") }}
+     <div class="col-sm-9">
+         {{ form.birth(size=20, class="form-control", placeholder="birthday") }}
+         {% for error in form.errors.birth %}
+             <span style="color:red;">* {{ error }}</span>
+         {% endfor %}
+     </div>
+</div>
+<div class="form-group">
+    {{ form.brief_description.label(class="control-label col-sm-3") }}
+     <div class="col-sm-9">
+         {{ form.brief_description(size=20, class="form-control", placeholder="brief description") }}
+         {% for error in form.errors.brief_description %}
+             <span style="color:red;">* {{ error }}</span>
+         {% endfor %}
+     </div>
+</div>
+<div class="form-group">
      <div class="col-sm-3 col-xs-6">
          <a class="btn btn-default form-control" href="{{ url_for('sso.login', **referrer_dict) }}">Back Login</a>
      </div>
@@ -69,4 +105,13 @@
  </div>
 
 </form>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.combobox').combobox();
+  });
+</script>
 {% endblock %}

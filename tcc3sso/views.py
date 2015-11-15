@@ -10,7 +10,7 @@
 import urllib.parse
 from flask import Blueprint, abort, render_template, url_for, make_response, redirect, flash, request, jsonify
 from .forms import LoginForm, SignupForm
-from .sso import LoginUser, SSOToken, Cookie, SSOApi
+from .sso import UserProfile, LocalAuth, SSOToken, Cookie, SSOApi
 from .helpers import get_referrer_url, get_referrer_name
 from .settings import CURRENT_API
 
@@ -65,13 +65,14 @@ def login():
     form = LoginForm()
     try:
         if form.validate_on_submit():
-            user = LoginUser.query_user(form.account.data, form.pwd.data)
+            user = LocalAuth.try_login(form.account.data, form.pwd.data)
+            """:type user: UserProfile"""
             if not user:
                 raise ValueError('The account or the password is incorrect.')
 
             # login_user(user)
 
-            token = SSOToken(user.name)
+            token = SSOToken(user.nick_name)
             SSOToken.add_token(token)
             ticket = token.add_new_ticket()
             if not isinstance(ticket, str):
@@ -108,7 +109,11 @@ def register():
     print('sso.register:', referrer_dict)
     form = SignupForm()
     if form.validate_on_submit():
-        if LoginUser.register_user(form.nick_name.data, form.pwd.data, form.email.data, description='User'):
+        # if LoginUser.register_user(form.nick_name.data, form.pwd.data, form.email.data, description='User'):
+        if LocalAuth.try_register(form.nick_name.data, form.email.data, form.pwd.data,
+                                  birth=form.birth.data,
+                                  gender=form.gender.data,
+                                  brief_description=form.brief_description.data):
             flash('Sign up success,Please Login.')
             return redirect(url_for('sso.login'))
     return render_template('sign_up.html', form=form, referrer_dict=referrer_dict)
