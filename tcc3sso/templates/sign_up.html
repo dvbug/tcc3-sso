@@ -71,7 +71,7 @@
 <div class="form-group ">
     {{ form.gender.label(class="control-label col-sm-3") }}
      <div class="col-sm-9">
-         {{ form.gender(size=20, class="form-control select", placeholder="gender") }}
+         {{ form.gender(size=20, class="selectpicker show-tick form-control") }}
          {% for error in form.errors.gender %}
              <span style="color:red;">* {{ error }}</span>
          {% endfor %}
@@ -109,9 +109,9 @@
 
 {% block scripts %}
 {{ super() }}
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('.combobox').combobox();
-  });
-</script>
+{#<script type="text/javascript">#}
+{#  $(document).ready(function(){#}
+{#    $('.combobox').combobox();#}
+{#  });#}
+{#</script>#}
 {% endblock %}

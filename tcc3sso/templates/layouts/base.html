@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 {% import "layouts/utils.html" as utils %}
 
-{% set SSO_TITLE = "TCC3 - SSO Center" %}
+{% set SSO_TITLE = "TCC - SSO Center" %}
 
 {% block title%}
     {{ SSO_TITLE }}
@@ -13,6 +13,15 @@
 {% block styles %}
     {{ super() }}
     {{ utils.static_css('default.css') }}
+    {{ utils.static_css('css/bootstrap-select.css', cdn='bootstrap-select-1.7.2-dist') }}
+
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    {{ utils.static_js('jquery-1.11.3.min.js',cdn='js/jquery') }}
+{#    {{ utils.static_js('jquery.jsonp.js',cdn='js/jquery') }}#}
+    {{ utils.static_js('js/bootstrap-select.js',cdn='bootstrap-select-1.7.2-dist') }}
 {% endblock %}
 
 {% block content %}

@@ -1,16 +1,16 @@
 # coding:utf-8
 """
-    run
-    ~~~~~~~~~~~~~~~~~~~~
+    wsgi
+    ~~~~
 
-    tcc3sso run
+    tcc3sso wsgi interface.
     :copyright: (c) 2015 by Vito.
     :license: GNU, see LICENSE for more details.
 """
 
-from tcc3sso import create_app
+from tcc3sso import create_app, settings_override
 
-application = create_app()
+application = create_app(settings_override=settings_override)
 
 
 if __name__ == '__main__':
